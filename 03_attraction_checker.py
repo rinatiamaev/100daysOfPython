@@ -12,6 +12,9 @@ if height >= 120 and age < 12:
 elif height >= 120 and (age >= 12 or age <= 18):
     print("Your price 15$")
     totalPrice = 15
+elif age >= 60:
+    print("Good luck, your ticket is free!")
+    totalPrice = 0
 else:
     print("Your price 20$")
     totalPrice = 20
