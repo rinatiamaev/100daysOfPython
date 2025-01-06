@@ -15,5 +15,6 @@ if treasure_pos == choice_pos:
     print(f"{row1}\n{row2}\n{row3}")
     print("Congratulations! You found a treasure!")
 else:
+    map[row_choice][col_choice] = "X"
     print(f"{row1}\n{row2}\n{row3}")
     print("Sorry, you didn't find a treasure. Try again.")
