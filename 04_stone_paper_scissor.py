@@ -69,3 +69,4 @@ while True:
     again = input("Do you want play again (y/n): ")
     if again != "y":
         print("Thank you for playing, BYE!")
+        break
