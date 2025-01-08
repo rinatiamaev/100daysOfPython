@@ -1,32 +1,4 @@
-import operator
 
-calc_dict = {
-    "+": operator.add,
-    "-": operator.sub,
-    "*": operator.mul,
-    "/": operator.truediv
-}
-
-def Calc():
-    print("Welcome to calc! use num1, operator: + - * / and num2")
-    while True:
-        try:
-            n1 = float(input("Type number 1: "))
-            op = input("Type operator: ")
-            n2 = float(input("Type number 2: "))
-            if op not in calc_dict:
-                print("wrong operator")
-                continue
-            operation = calc_dict[op]
-            res = operation(n1, n2)
-            print(f"{n1} {op} {n2} = {res}")
-        except ZeroDivisionError: print("Division by zero!")
-        again = input("New operation? type y/n: ").lower()
-        if again != "y":
-            print("Thanks you for using our calculator")
-            break
-
-# Calc()
 
 stud_score = {
     "Anna" : 98,
