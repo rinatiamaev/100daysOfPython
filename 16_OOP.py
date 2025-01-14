@@ -145,25 +145,36 @@ class CoffeeMaker:
 
 menu = Menu()
 ready = CoffeeMaker()
+money_machine = MoneyMachine()
+is_on = True
+
 print("Welcome to COFFEE MACHINE")
-order = input("Please select a drink: " + menu.getItem())
-drink = menu.finding_drink(order)
-
-if drink:
-    print(f"Your {drink.name} costs {drink.cost}")
-else:
-    print("Error")
-
-if drink and ready.is_resource_sufficient(drink):
-    print("Please insert a coin")
-    money = MoneyMachine()
-    received_money = money.process_coins()
-    order_success = money.make_payment(drink.cost)
-    if order_success:
-        print("Your coffee is being prepared, please wait...")
-        time.sleep(3)  # ожидание для имитации процесса приготовления
-        ready.make_coffee(drink)  # передаем drink в метод make_coffee
+while is_on:
+    order = input("Please select a drink: " + menu.getItem())
+    if order == "off":
+        is_on = False
+        print("coffe machine is off")
+    elif order == "report":
+        money_machine.report()
+        ready.report()
     else:
-        print("Not enough money.")
-else:
-    print("Not enough resources or drink unavailable.")
+        drink = menu.finding_drink(order)
+    
+        if drink:
+            print(f"Your {drink.name} costs {drink.cost}")
+        else:
+            print("Error")
+
+        if drink and ready.is_resource_sufficient(drink):
+            print("Please insert a coin")
+            money = MoneyMachine()
+            received_money = money.process_coins()
+            order_success = money.make_payment(drink.cost)
+            if order_success:
+                print("Your coffee is being prepared, please wait...")
+                time.sleep(3)  # ожидание для имитации процесса приготовления
+                ready.make_coffee(drink)  # передаем drink в метод make_coffee
+            else:
+                print("Not enough money.")
+        else:
+            print("Not enough resources or drink unavailable.")
