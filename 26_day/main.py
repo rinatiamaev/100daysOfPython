@@ -1,13 +1,12 @@
 import pandas
 
-data_alpha = pandas.read_csv("alpha.csv")
+data = pandas.read_csv("alpha.txt")
+# print(data)
 
+format_data = {row.letter : row.code for index, row in data.iterrows() }
 
+word = input("type your word: ").upper()
 
-format_data_alpha = {row.letter:row.code for (index, row) in data_alpha.iterrows()}
-# print(format_data_alpha)
+new_word = [format_data[letter] for letter in word]
 
-word = input("Enter your word: ").upper()
-
-splitted_word = [format_data_alpha[letter] for letter in word]
-print(splitted_word)
+print(new_word)
