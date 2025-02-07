@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
+import pyperclip
 # SAVE PASSWORD=============================
 def save_pass():
     site = site_entry.get()
@@ -36,6 +37,7 @@ def gen_pass():
 
     password_out = "".join(password_list)
     pass_entry.insert(0, password_out)
+    pyperclip.copy(password_out)
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
