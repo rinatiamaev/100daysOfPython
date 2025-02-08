@@ -2,21 +2,34 @@ from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
+import json
 # SAVE PASSWORD=============================
 def save_pass():
     site = site_entry.get()
     email = email_entry.get()
     password = pass_entry.get()
+    new_data = {
+        site:{
+            "email" : email,
+            "password" : password,
+        }
+    }
     if len(site) == 0 or len(password) == 0:
         messagebox.showinfo(title="uuuups", message=f"some fields is empty")
     else:
-        is_ok = messagebox.askokcancel(title=site, message=f"You entered\nEmail: {email}"
-                            f"\nPassword: {password} \n Is it ok?")
-        if is_ok:
-            with open("data.txt", "a") as data_file:
-                data_file.write(f"{site} | {email} | {password}\n")
-                site_entry.delete(0, END)
-                pass_entry.delete(0, END)
+        try:
+            with open("data.json", "r") as data_file:
+                data = json.load(data_file)  # Load existing data
+        except (FileNotFoundError, json.JSONDecodeError):
+            data = {}  # If file is missing or empty, start with an empty dictionary
+
+        data.update(new_data)
+
+        with open("data.json", "w") as data_file:
+            json.dump(data, data_file, indent=4)
+
+            site_entry.delete(0, END)
+            pass_entry.delete(0, END)
 
 
 # GENERATE PASSWORD=============================
