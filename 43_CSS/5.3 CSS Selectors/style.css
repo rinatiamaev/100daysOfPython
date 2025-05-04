@@ -1,0 +1,24 @@
+ol {
+  margin-left: -40px;
+  margin-top: -20px;
+  list-style-position: inside;
+}
+
+/* Write your CSS below, don't change the rules above. */
+
+
+p {
+  color: red;
+}
+
+.note[value="2"] {
+  color: rebeccapurple;
+}
+
+#id-selector-demo[value="3"]{
+  color: darkgoldenrod;
+}
+
+.note[value="4"]{
+  border: 1px solid gray;
+}
