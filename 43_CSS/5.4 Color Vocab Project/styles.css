@@ -30,3 +30,13 @@ img {
     width: 200px;
     height: 200px;
 }
+
+h1 {
+    background-color: darkseagreen;
+    color : darkslateblue
+}
+
+h2 {
+    color: F2F8F1;
+    background-color: bisque;
+}
